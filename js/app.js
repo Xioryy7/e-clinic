@@ -8,6 +8,23 @@ function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
+//nurse login
+(function createDefaultAdmin() {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const adminExists = users.some(u => u.role === "admin");
+
+  if (!adminExists) {
+    users.push({
+      username: "admin",
+      password: "12345",
+      role: "admin"
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+})();
+
 /* REGISTER *//////////
 function registerUser() {
   const username = document.getElementById("username").value.trim();
@@ -714,17 +731,48 @@ function closeNurseModal() {
 }
 
 function authenticateNurse() {
-  const username = document.getElementById("nurseUser").value;
-  const password = document.getElementById("nursePass").value;
+  const username = document.getElementById("nurseUser").value.trim();
+  const password = document.getElementById("nursePass").value.trim();
 
-  const defaultUser = "admin";
-  const defaultPass = "12345";
+  let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (username === defaultUser && password === defaultPass) {
+  const admin = users.find(
+    u => u.username === username && u.password === password && u.role === "admin"
+  );
+
+  if (admin) {
     localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("currentUser", "Admin");
+    localStorage.setItem("currentUser", admin.username);
+    localStorage.setItem("currentRole", "admin");
     window.location.href = "dashboard.html";
   } else {
     alert("Invalid Nurse/Admin credentials.");
   }
+}
+
+//change nurse password
+
+function changePassword() {
+  const current = document.getElementById("currentPass").value;
+  const newPass = document.getElementById("newPass").value;
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let currentUser = localStorage.getItem("currentUser");
+
+  let userIndex = users.findIndex(u => u.username === currentUser);
+
+  if (userIndex === -1) {
+    alert("User not found.");
+    return;
+  }
+
+  if (users[userIndex].password !== current) {
+    alert("Current password is incorrect.");
+    return;
+  }
+
+  users[userIndex].password = newPass;
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Password updated successfully!");
 }
