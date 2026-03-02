@@ -57,11 +57,12 @@ body {
 /* TOP BAR */
 .topbar {
   height: 56px;
-  background: linear-gradient(180deg, #243447, #1b2838);
+  background: #2f4fa2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .topbar-left {
@@ -94,7 +95,7 @@ gap: 14px;
 /* SIDEBAR */
 .sidebar {
   width: 220px;
-  background: linear-gradient(180deg, #243447, #1b2838);
+  background: #2f4fa2;
   transition: width 0.25s ease;
   overflow: hidden;
   padding: 12px;
@@ -557,4 +558,23 @@ td {
 .modal-buttons button {
   padding: 6px 12px;
   margin-left: 5px;
+}
+
+/* ===== LOGO FIX ===== */
+.main-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+/*profile*/
+.user-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.user-link:hover {
+  text-decoration: underline;
 }
