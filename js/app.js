@@ -182,7 +182,7 @@ function loadStudentsTable() {
         <td>${s.gradeLevel || ""} - ${s.section || ""}</td>
         <td>
           <button onclick="addEntry('${s.studentNo || s.id}')">Add Status</button>
-          <button onclick="viewRecords('${s.username}')">View</button>
+          <button onclick="viewRecords('${s.studentNo || s.id}')">View</button>
           <button onclick="deleteStudent(${index})">Delete</button>
         </td>
       </tr>
@@ -222,7 +222,7 @@ function saveVisit() {
 
   let record = {
   recordId: Date.now(), // ✅ REQUIRED
-  studentId: document.getElementById("studentId").value,
+  studentId: document.getElementById("studentId").value.trim(),
   date: document.getElementById("visitDate").value,
   temp: document.getElementById("temp").value,
   pr: document.getElementById("pr").value,
@@ -288,7 +288,8 @@ let grade = student
   ? `${student.gradeLevel || ""} - ${student.section || ""}`
   : "-";
 
-  let studentRecords = records.filter(r => r.studentId === selectedStudentId);
+  let studentRecords = records.filter(r =>
+  String(r.studentId) === String(selectedStudentId));
 
   if (studentRecords.length === 0) {
     table.innerHTML = `
@@ -329,8 +330,8 @@ function loadStudentMedicalInfo() {
   let selectedStudentId = localStorage.getItem("selectedStudent");
 
   let student = students.find(s =>
-    s.username === selectedStudentId
-  );
+  String(s.studentNo) === String(selectedStudentId)
+);
 
   if (!student) {
     alert("Student not found.");
@@ -611,7 +612,6 @@ function saveStudentForm() {
   let ailments = [];
   document.querySelectorAll(".ailment-checkbox:checked")
     .forEach(cb => ailments.push(cb.value));
-
   let studentData = {
     username: currentUser, // 🔥 LINK TO LOGIN ACCOUNT
     name: document.getElementById("name").value,
@@ -687,8 +687,8 @@ function updateMedicalInfo() {
 
   // 🔥 MATCH USING USERNAME (LIKE LOAD FUNCTION)
   let index = students.findIndex(s =>
-    s.username === selectedStudentId
-  );
+  String(s.studentNo) === String(selectedStudentId)
+);
 
   if (index === -1) {
     alert("Student not found.");
