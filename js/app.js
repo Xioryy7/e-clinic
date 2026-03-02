@@ -47,7 +47,7 @@ function registerUser() {
   saveUsers(users);
 
   alert("Account registered successfully!");
-  window.location.href = "loginpage.html";
+  window.location.href = "index.html";
 }
 
 /* LOGIN */
@@ -77,13 +77,13 @@ function checkAuth(requiredRole = null) {
   const role = localStorage.getItem("currentRole");
 
   if (loggedIn !== "true") {
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
     return;
   }
 
   if (requiredRole && role !== requiredRole) {
     alert("Access denied.");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
   }
 }
 
@@ -92,7 +92,7 @@ function logout() {
   localStorage.removeItem("loggedIn");
   localStorage.removeItem("currentUser");
   localStorage.removeItem("currentRole");
-  window.location.href = "Loginpage.html";
+  window.location.href = "index.html";
 }
 
 //SHOW CURRENT USER
