@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>E-Clinic Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+
+  <div class="topbar-left">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="topbar-logo">
+      <img src="IMAGES/act.png" alt="Logo">
+      <span>E-Clinic HMS</span>
+    </div>
+  </div>
+
+  <div class="user-bar">
+    <span id="currentUserLabel"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar collapsed" id="sidebar">
+  <nav>
+    <a href="dashboard.html">
+      <img src="IMAGES/home.png" class="nav-icon" alt="Dashboard">
+      <span class="text">Dashboard</span>
+    </a>
+
+
+    <a href="students.html">
+      <img src="IMAGES/students.png" class="nav-icon" alt="Students">
+      <span class="text">Students</span>
+    </a>
+  </nav>
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <h2>Dashboard</h2>
+
+    <!-- STAT CARDS -->
+    <div class="stats">
+      <div class="stat blue">
+        <span>Total Students</span>
+        <b id="totalStudents">0</b>
+      </div>
+      <div class="stat green">
+        <span>Total Clinic Visits</span>
+        <b id="totalRecords">0</b>
+      </div>
+      <div class="stat red">
+        <span>Today</span>
+        <b id="todayVisits">0</b>
+      </div>
+    </div>
+
+    <!-- RECENT VISITS -->
+    <div class="card">
+  <h3>Recent Clinic Visits</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Complaint</th>
+      </tr>
+    </thead>
+
+    <tbody id="recentVisits">
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  loadDashboard();
+  loadRecentVisits();
+  loadCurrentUser();
+  setActiveSidebarLink();
+</script>
+
+</body>
+</html>

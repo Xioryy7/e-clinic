@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Students</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+
+  <div class="topbar-left">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="topbar-logo">
+      <img src="NEW LOGO.png" alt="Logo">
+      <span>E-Clinic HMS</span>
+    </div>
+  </div>
+
+  <div class="user-bar">
+    <span id="currentUserLabel"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar collapsed" id="sidebar">
+  <nav>
+    <a href="dashboard.html">
+      <img src="IMAGES/home.png" class="nav-icon" alt="Dashboard">
+      <span class="text">Dashboard</span>
+    </a>
+
+
+    <a href="students.html">
+      <img src="IMAGES/students.png" class="nav-icon" alt="Students">
+      <span class="text">Students</span>
+    </a>
+  </nav>
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <h2>Student List</h2>
+
+<div class="table-header">
+  <input
+    type="search"
+    id="studentSearch"
+    placeholder="Search by ID or name"
+    oninput="filterStudents()"
+    onkeydown="if(event.key==='Enter'){filterStudents();}"
+  >
+</div>
+
+    <div class="card">
+
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Grade & Section</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="studentTable">
+          <!-- students will load here -->
+        </tbody>
+      </table>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  loadStudentsTable();
+  loadCurrentUser();
+  setActiveSidebarLink();
+</script>
+
+</body>
+</html>

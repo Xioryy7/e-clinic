@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Clinic Health Monitoring System | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to right, #e6f0ff, #f5f9ff);
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: #ffffff;
+      width: 350px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .login-box img {
+      width: 70px;
+      margin-bottom: 10px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #1f3c88;
+    }
+
+    .login-box label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #3a6fd8;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #2f5fc4;
+    }
+
+    .link-text {
+      margin-top: 10px;
+      color: #3a6fd8;
+      cursor: pointer;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .link-text:hover {
+      text-decoration: underline;
+    }
+
+    #error {
+      color: #c00;
+      margin-top: 10px;
+      min-height: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="login-box">
+    <img src="IMAGES/LOGO.png" alt="System logo">
+    <h2>E-Clinic Health Monitoring</h2>
+
+    <form onsubmit="event.preventDefault(); loginUser();">
+      <label>Username:</label>
+      <input type="text" id="username" required>
+
+      <label>Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit" class="login-btn">
+        Login as Student
+      </button>
+
+      <!-- SIMPLE CLICKABLE TEXT -->
+      <span class="link-text" onclick="openNurseModal()">
+        Login as Nurse
+      </span>
+
+      <br>
+
+      <span class="link-text"
+            onclick="window.location.href='LoginRegister.html'">
+        Register Account
+      </span>
+
+      <div id="error"></div>
+    </form>
+  </div>
+</div>
+
+<!-- NURSE LOGIN MODAL -->
+<div id="nurseModal" class="modal">
+  <div class="modal-box">
+    <h3>Authentication Required</h3>
+
+    <input type="text" id="nurseUser" placeholder="User Name">
+    <input type="password" id="nursePass" placeholder="Password">
+
+    <div class="modal-buttons">
+      <button onclick="closeNurseModal()">Cancel</button>
+      <button onclick="authenticateNurse()">Log In</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

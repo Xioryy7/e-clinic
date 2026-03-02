@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Clinic Health Monitoring System | Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #e6f0ff, #f5f9ff);
+        }
+
+        .header h1 {
+            font-size: 18px;
+            color: #1f3c88;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        .register-box {
+            background-color: #ffffff;
+            width: 480px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .register-box img {
+            width: 70px;
+            margin-bottom: 10px;
+        }
+
+        .register-box h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #1f3c88;
+        }
+
+        .register-box label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .register-box input,
+        .register-box select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .register-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #3a6fd8;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .register-box button:hover {
+            background-color: #2f5fc4;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            display: block;
+            font-size: 14px;
+            color: #3a6fd8;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Registration Section -->
+    <div class="container">
+        <div class="register-box">
+            <img src="NEW LOGO.png" alt="System logo">
+            <h2>E-Clinic Registration</h2>
+
+    <form onsubmit="event.preventDefault(); register();">
+         <label>Username</label>
+         <input type="text" id="username" placeholder="Create username" required>
+
+         <label>Password</label>
+         <input type="password" id="password" placeholder="Create password" required>
+
+         <label>Confirm Password</label>
+         <input type="password" id="confirm_password" placeholder="Confirm password" required>
+
+         <button type="submit">Register Account</button>
+
+         <button type="button" onclick="window.location.href='loginpage.html'">Already have an account?</button>
+
+    </form>
+
+        </div>
+    </div>
+
+<script src="js/app.js"></script>
+<script>
+  function register() {
+    registerUser();
+  }
+
+</script>
+</body>
+</html>
